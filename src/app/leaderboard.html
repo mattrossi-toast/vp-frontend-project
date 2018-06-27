@@ -3,13 +3,23 @@
       <h2 class="mt-4">VP Leaderboard</h2>
       <p class="lead">Friend Steps Leaderboard</p>
   </div>
-
-    <ul class="friends-list">
-      <li class='friends-list--header'>
-        <span>Friend</span>
-        <span>Steps</span>
+  <form class="form-inline"> 
+   <input ng-model="query" type="text" placeholder="Search" style="margin:auto;">
+    </form>
+  <ul class="friends-list">
+	<li class='friends-list--header'>
+        <span>Rank</span>
+        <span>Image</span>
+		<span>Name</span>
+		<span>Steps</span>
       </li>
-      <li ng-repeat="user in users">
+      <li ng-repeat="user in users | filter:query | orderBy: '-steps'"> <!-- orderBy allows the list to sort itself by steps !-->
+	  <span>
+		{{ $index + 1 }} <!-- Use index + 1 as rank -->
+	  </span>
+		<span>
+            <img src= '{{ user.picture.thumbnail }}' alt = {{user.picture.thumbnail}}> </img> <!-- pull user thumbnail from API -->
+        </span>
         <span>
             {{ user.name.first }} {{ user.name.last }}
         </span>
@@ -18,5 +28,4 @@
         </span>
       </li>
     </ul>
-
 </main>

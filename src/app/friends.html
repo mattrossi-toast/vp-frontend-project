@@ -1,0 +1,23 @@
+<main role="main" class="container">
+  <div class="page-heading">
+      <h2 class="mt-4">Suggested Friends</h2>
+  </div>
+<div style="width:700px;  margin:auto;"> <!-- give set width to only allow 4 profiles, center them -->
+	<div ng-repeat="user in users" style="width:100%; margin:auto;"  > <!-- center this div as well -->
+		<div style="float:left; clear:right" id = "{{ 'friend-' + $index }}"> <!-- use index to provide unique ID -->
+            <img src= '{{ user.picture.large }}' alt = {{user.large}} style="width:100%; margin:auto;"> </img> 
+			 <p style="width:100%; margin:auto;"> {{ user.name.first }} {{ user.name.last }}</p>
+			 <button type="submit" ng-disabled="isDisabled" ng-click="sendRequest($index)" >Send Friend Request </button> <!-- add onclick to button -->
+        </div>		
+</div>
+	</div>	
+	<div style="margin:250px; width:700px; height:5px; margin:auto;"> <!-- give friends page some margin so that longer names don't get too close -->
+	<h2 style="width:100px; margin:auto">Your Friends </h2>
+	<div ng-repeat="friend in friends" style="" >
+		<div style="float:right; clear:left; margin: 5px;">
+			<img src= '{{ friend.picture.large }}' alt = {{friend.picture.large}}> </img>	
+			<p> {{ friend.name.first }} {{ friend.name.last }}</p>
+		</div>		
+	</div>
+	</div>
+</main>
